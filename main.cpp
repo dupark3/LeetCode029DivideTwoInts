@@ -32,11 +32,12 @@ int divide(int dividend, int divisor) {
 
 
 TEST_CASE ("Division is performed without /", "[division]"){
-    REQUIRE ( divide (5, 0) == 0);
+
     REQUIRE ( divide(7,2)               == 3 );
     REQUIRE ( divide(7,-2)              == -3 );
     REQUIRE ( divide(INT_MAX, 1)        == INT_MAX );
     REQUIRE ( divide(INT_MIN, -1)       == INT_MAX );
     REQUIRE ( divide(INT_MIN, INT_MIN)  == 1 );
+    REQUIRE ( divide(INT_MIN, -2)       == INT_MIN/-2 );
 
 }
