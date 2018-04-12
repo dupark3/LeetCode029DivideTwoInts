@@ -17,17 +17,15 @@ public:
         }
         if (dividend == INT_MIN){
             dividend += abs(divisor);
-            answer = 1;
+            ++answer;
         } if (divisor == INT_MIN){
-            return 0;
+            return answer;
         }
-//        float logdividend = log10(abs(dividend));
-//        double logdivisor = log10(abs(divisor));
-//        double logdifference = logdividend - logdivisor;
+
         answer += pow(10, (log10(abs(dividend)) - log10(abs(divisor)))) + 0.0001;
 
         if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0))
-            return answer - answer - answer; // opposite signs, quotient is negative
+            return -answer; // opposite signs, quotient is negative
         else
             return answer;
     }
@@ -36,7 +34,7 @@ public:
 int main()
 {
     Solution s;
-    int answer = s.divide(-100, -2147483648);
+    int answer = s.divide(-, -2);
     cout << answer << endl;
 
     return 0;
