@@ -11,7 +11,7 @@ using namespace std;
 class Solution {
 public:
     int divide(int dividend, int divisor) {
-        if (divisor == 0)
+        if (dividend <= INT_MIN || divisor == 0)
             return INT_MAX;
 
         bool opposite_signs = false;
@@ -36,7 +36,7 @@ public:
 int main()
 {
     Solution s;
-    int answer = s.divide(5, -2);
+    int answer = s.divide(2147483647, 1);
     cout << answer << endl;
 
     return 0;
