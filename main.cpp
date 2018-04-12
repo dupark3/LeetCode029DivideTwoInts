@@ -11,23 +11,12 @@ using namespace std;
 class Solution {
 public:
     int divide(int dividend, int divisor) {
-        if (dividend <= INT_MIN || divisor == 0)
+        unsigned long answer = pow(10, (log10(abs(dividend)) - log10(abs(divisor)))) + 0.0001;
+
+        if (answer > INT_MAX)
             return INT_MAX;
-
-        bool opposite_signs = false;
-        if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)){
-            opposite_signs = true;
-            dividend = dividend - dividend - dividend; // flip sign
-        }
-
-        int answer = 0;
-        while (abs(dividend) >= abs(divisor)){
-            dividend -= divisor;
-            ++answer;
-        }
-
-        if (opposite_signs)
-            return answer - answer - answer;
+        if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0))
+            return answer - answer - answer; // opposite signs, quotient is negative
         else
             return answer;
     }
@@ -36,7 +25,7 @@ public:
 int main()
 {
     Solution s;
-    int answer = s.divide(2147483647, 1);
+    int answer = s.divide(-2147483648, -1);
     cout << answer << endl;
 
     return 0;
